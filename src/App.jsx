@@ -12,6 +12,10 @@ const addTask = () => {
   setNewTask("")
 }
 
+const deleteTask = (taskTobeDeleted)=>{
+  setTasks(tasks.filter(task=>task!== taskTobeDeleted))
+}
+
   return (
     <>
       <input placeholder="Add a new task" value={newtask} onChange={(e)=>setNewTask(e.target.value)}/>
@@ -20,7 +24,7 @@ const addTask = () => {
       <p>All tasks :</p>
       <ul>
         {tasks.map((task,index)=>
-          <li key={index}>{task}</li>
+          <li key={index}>{task}<button onClick={()=>deleteTask(task)}>Delete</button></li>
         )}
       </ul>
     </>
